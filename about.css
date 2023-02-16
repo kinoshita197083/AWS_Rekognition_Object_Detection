@@ -1,0 +1,27 @@
+.about-container {
+    text-align: center;
+    height: 100vh;
+    background-color: var(--navbar-bg-color);
+}
+
+.about-heading {
+    font-size: var(--homepage-heading-font-size);
+    color: var(--homepage-intro-color)
+}
+
+#about-img {
+    height: 110%;
+    width: 110%;
+}
+
+.about-heading {
+    padding-top: 15%;
+}
+
+.about-text {
+    text-align: left;
+    color: var(--homepage-intro-color);
+    padding-top: 5%;
+    width: 80%;
+    margin: 0 auto;
+}

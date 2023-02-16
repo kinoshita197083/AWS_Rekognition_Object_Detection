@@ -1,4 +1,7 @@
 @import url('./home.css');
+@import url('./upload.css');
+@import url('./query.css');
+@import url('./about.css');
 
 :root {
     --navbar-bg-color: rgb(26, 25, 25);
@@ -7,15 +10,17 @@
     --navbar-btn-color: rgb(193, 42, 42);
 
     --nav-logo-font-size: 1.8rem;
-    --heading-font-size: 2rem;
+    /* --heading-font-size: 2rem; */
 
     --navbar-mobile-menu-color: rgb(46, 45, 45);
+
+    --btn-font-size: 1rem;
 
     --heading-font-color: blue;
 
     --homepage-heading-font-size: 2.5rem;
     --homepage-intro-color: rgb(240, 237, 237);
-    --homepage-intro-font-size: 1.8rem;
+    --homepage-intro-font-size: 1.2rem;
     /* --homepage-intro-bg-color: rgb(37, 37, 37); */
 }
 
@@ -24,6 +29,10 @@
     padding: 0;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 a {
@@ -40,6 +49,27 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
+.btn {
+    background-color: var(--navbar-btn-color);
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    border: solid 1px transparent;
+    color: var(--navbar-item-color);
+    font-size: var(--btn-font-size);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--navbar-item-color);
+    border: solid 1px var(--navbar-btn-color);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.padding-left-3 {
+    padding-left: 3%;
+}
+
 .left-half {
     /* background-color: darkgoldenrod; */
     padding: 5%;
@@ -52,7 +82,8 @@ a {
 
 .nav-container {
     width: 100%;
-    background-color: var(--navbar-bg-color)
+    background-color: var(--navbar-bg-color);
+    position: fixed;
 }
 
 .navbar {

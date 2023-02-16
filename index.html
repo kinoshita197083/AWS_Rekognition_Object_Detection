@@ -12,31 +12,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- external javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="nav-container">
+    <header class="nav-container">
         <nav class="navbar">
-            <h1 id="nav-logo"><a href="#">Reko</a></h1>
+            <h1 id="nav-logo"><a href="#home">Reko</a></h1>
             <div class="menu-toggle" id="mobile-menu">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
             <ul class="nav-menu">
-                <li><a href="#" class="nav-links nav-border-bottom">Query</a></li>
-                <li><a href="#" class="nav-links nav-border-bottom">Upload</a></li>
-                <li><a href="#" class="nav-links nav-border-bottom">About</a></li>
+                <li><a href="#about" class="nav-links nav-border-bottom">About</a></li>
+                <li><a href="#query" class="nav-links nav-border-bottom">Query</a></li>
+                <li><a href="#upload" class="nav-links nav-border-bottom">Upload</a></li>
                 <li><a href="#" class="nav-links nav-links-btn">Sign Up</a></li>
             </ul>
         </nav>
-    </div>
+    </header>
 
-    <main class="main-container">
+    <section id="home" class="main-container">
         <div class="container">
             <div class="even-columns">
                 <div class="left-half">
-                    <h1 class="home-heading">Analyze Images and Videos</h1>
+                    <h1 class="home-heading">Analyse Images and Videos</h1>
                     <p class="home-intro">A fully managed service that can detect objects, text, faces from the images
                         and videos that you
                         upload.</p>
@@ -48,8 +52,45 @@
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <section id="about" class="about-container">
+        <div class="container">
+            <div class="even-columns">
+                <div class="left-half">
+                    <img src="./image/undraw_photo_re_5blb.svg" alt="About cover image" id="about-img">
+                </div>
+
+                <div class="right-half">
+                    <h2 class="about-heading">About</h2>
+                    <p class="about-text">Amazon Rekognition can detect text in images and videos. It can then convert
+                        the detected text into machine-readable text. You can use machine-readable text detection in
+                        images to implement solutions including: </p>
+                    <ul class="about-text padding-left-3">
+                        <li>mp4</li>
+                        <li>jpg</li>
+                        <li>png</li>
+                        <li>gif</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="query" class="query-container">
+        <div class="container">
+            <h2 class="query-heading">Search with keyword</h2>
+        </div>
+    </section>
+
+    <section id="upload" class="upload-container">
+        <div class="container">
+            <h2 class="upload-heading">What file type would you like to analyse</h2>
+        </div>
+    </section>
     <script src="app.js"></script>
+    <script src="image_upload.js"></script>
 </body>
 
 </html>

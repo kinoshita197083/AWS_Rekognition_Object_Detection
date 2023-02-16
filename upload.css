@@ -1,0 +1,10 @@
+.upload-container {
+    text-align: center;
+    height: 100vh;
+    background-color: var(--navbar-bg-color);
+}
+
+.upload-heading {
+    font-size: var(--homepage-heading-font-size);
+    color: var(--homepage-intro-color)
+}
