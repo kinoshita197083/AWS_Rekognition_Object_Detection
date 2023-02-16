@@ -1,0 +1,37 @@
+.main-container {
+    background-color: var(--navbar-bg-color);
+    height: max-content;
+}
+
+#home-img {
+    width: 80%;
+    height: 80%;
+}
+
+.home-heading {
+    font-size: var(--homepage-heading-font-size);
+    color: var(--homepage-intro-color);
+    margin-bottom: 5%;
+}
+
+.home-intro {
+    font-size: var(--home);
+    color: var(--homepage-intro-color);
+    margin-bottom: 5%;
+}
+
+.btn {
+    background-color: var(--navbar-btn-color);
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    border: solid 1px transparent;
+    color: var(--navbar-item-color);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--navbar-item-color);
+    border: solid 1px var(--navbar-btn-color);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
