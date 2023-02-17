@@ -1,6 +1,7 @@
 .main-container {
     background-color: var(--navbar-bg-color);
     height: max-content;
+    padding-top: 5%;
 }
 
 #home-img {

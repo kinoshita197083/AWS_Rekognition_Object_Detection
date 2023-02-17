@@ -1,10 +1,56 @@
 .upload-container {
     text-align: center;
-    height: 100vh;
+    height: max-content;
     background-color: var(--navbar-bg-color);
 }
 
 .upload-heading {
     font-size: var(--homepage-heading-font-size);
     color: var(--homepage-intro-color)
+}
+
+.image-wrapper {
+    width: 45%;
+    height: auto;
+    margin: 0 auto 5% auto;
+}
+
+.place-holder {
+    margin: 0 auto 5% auto;
+    width: 65%;
+    border: 1px dashed white;
+    padding: 5%;
+}
+
+.upload-section-header {
+    color: var(--homepage-intro-color);
+    font-size: var(--upload-section-heading-font-size);
+}
+
+.heading-spacer {
+    margin: 5% 0;
+    color: var(--homepage-intro-color);
+}
+
+.place-holder.active {
+    border: 1px solid white;
+}
+
+#submit-btn {
+    display: none;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+    /* #upload-btn {
+        width: 80%;
+    } */
+
+    .upload-section-header {
+        font-size: var(--upload-section-mobile-heading-font-size);
+    }
+
+    .heading-spacer {
+        font-size: 1.3rem;
+    }
 }

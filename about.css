@@ -1,6 +1,6 @@
 .about-container {
     text-align: center;
-    height: 100vh;
+    height: max-content;
     background-color: var(--navbar-bg-color);
 }
 
@@ -25,3 +25,9 @@
     width: 80%;
     margin: 0 auto;
 }
+
+/* @media (max-width: 800px) {
+    .about-container {
+
+    }
+} */

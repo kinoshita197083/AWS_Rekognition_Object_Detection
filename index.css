@@ -22,6 +22,11 @@
     --homepage-intro-color: rgb(240, 237, 237);
     --homepage-intro-font-size: 1.2rem;
     /* --homepage-intro-bg-color: rgb(37, 37, 37); */
+
+    --upload-section-heading-font-size: 1.8rem;
+    --upload-section-mobile-heading-font-size: 1.5rem;
+
+    --query-label-font-size: 1.3rem;
 }
 
 * {
@@ -56,6 +61,7 @@ a {
     border: solid 1px transparent;
     color: var(--navbar-item-color);
     font-size: var(--btn-font-size);
+    width: 7.5rem;
 }
 
 .btn:hover {

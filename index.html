@@ -29,8 +29,8 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-links nav-border-bottom">About</a></li>
+                <li><a href="#upload" class="nav-links nav-border-bottom">Analyse</a></li>
                 <li><a href="#query" class="nav-links nav-border-bottom">Query</a></li>
-                <li><a href="#upload" class="nav-links nav-border-bottom">Upload</a></li>
                 <li><a href="#" class="nav-links nav-links-btn">Sign Up</a></li>
             </ul>
         </nav>
@@ -78,17 +78,36 @@
         </div>
     </section>
 
-    <section id="query" class="query-container">
+    <section id="upload" class="upload-container">
         <div class="container">
-            <h2 class="query-heading">Search with keyword</h2>
+
+            <div class="place-holder">
+                <h2 class="upload-section-header">Drag & Drop to Upload File</h2>
+                <h2 class="heading-spacer">OR</h2>
+                <div class="image-wrapper">
+                    <img id="preview-img" src="./image/undraw_no_data_re_kwbl.svg" alt="img holder" width="100%"
+                        height="100%">
+                </div>
+                <!-- <form action=""> -->
+                <input type="file" id="chooseFile-btn" hidden>
+                <button id="upload-btn" class="btn">Browse File</button>
+                <br>
+                <button style="margin-top: 2%;" id="submit-btn" class="btn">Analyse</button>
+                <!-- </form> -->
+            </div>
         </div>
     </section>
 
-    <section id="upload" class="upload-container">
+    <section id="query" class="query-container">
         <div class="container">
-            <h2 class="upload-heading">What file type would you like to analyse</h2>
+            <h2 class="query-heading">Search with keyword</h2>
+            <div class="query-form">
+                <label for="tag" class="query-label">Tag</label>
+                <input type="text" id="tag">
+            </div>
         </div>
     </section>
+
     <script src="app.js"></script>
     <script src="image_upload.js"></script>
 </body>

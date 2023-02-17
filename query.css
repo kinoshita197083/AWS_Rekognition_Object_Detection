@@ -8,3 +8,14 @@
     font-size: var(--homepage-heading-font-size);
     color: var(--homepage-intro-color);
 }
+
+.query-form {
+    padding: 3%;
+    /* background-color: grey; */
+}
+
+.query-label {
+    text-align: left;
+    color: var(--homepage-intro-color);
+    font-size: var(--query-label-font-size);
+}
