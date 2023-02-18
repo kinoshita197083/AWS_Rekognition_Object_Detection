@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/fa0610f9a7.js" crossorigin="anonymous"></script>
+
     <!-- external javascript -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -101,15 +104,20 @@
     <section id="query" class="query-container">
         <div class="container">
             <h2 class="query-heading">Search with keyword</h2>
-            <div class="query-form">
-                <label for="tag" class="query-label">Tag</label>
-                <input type="text" id="tag">
+            <div class="flex-container">
+                <div class="query-form">
+                    <div class="text-bubble-wrapper"></div>
+                    <input type="text" id="tag">
+                </div>
+                <input type="submit" class="btn" id="query-submit-btn">
             </div>
+            <div class="default-bubble-list"></div>
         </div>
     </section>
 
     <script src="app.js"></script>
     <script src="image_upload.js"></script>
+    <script src="query.js"></script>
 </body>
 
 </html>
