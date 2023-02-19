@@ -41,11 +41,24 @@
     margin: 0 auto;
 }
 
-@media (max-width: 800px) {
-    /* #upload-btn {
-        width: 80%;
-    } */
+.result-container {
+    background-color: var(--navbar-bg-color);
+    text-align: center;
+    height: 100vh;
+    display: none;
+}
 
+.result-heading {
+    font-size: var(--homepage-heading-font-size);
+    color: var(--homepage-intro-color);
+}
+
+.result-img-wrapper {
+    width: 20%;
+    margin: 5% auto 0% auto;
+}
+
+@media (max-width: 800px) {
     .upload-section-header {
         font-size: var(--upload-section-mobile-heading-font-size);
     }

@@ -1,8 +1,10 @@
 const queryWrapper = document.querySelector('.query-form'),
-    textBubbleWrapper = document.querySelector('.text-bubble-wrapper'),
+    textBubbleWrapper = document.querySelector('#default-options'),
     defaultBubbles = document.querySelectorAll('.default-bubble'),
     tagInput = document.querySelector('#tag'),
-    defaultBubbleWrapper = document.querySelector('.default-bubble-list');
+    defaultBubbleWrapper = document.querySelector('.default-bubble-list'),
+    imgGrp = document.querySelectorAll('.img-grp'),
+    enlargedImg = document.querySelector('.enlarged-img');
 
 let textBubbleList = [];
 let defaultBubbleList = ['smile', 'male', 'glasses', 'woman', 'happy', 'dog', 'tree'];
@@ -34,7 +36,13 @@ function clearAllTextBubbles() {
 
 //check if exists
 function checkIfTextBubbleExists(e) {
-    return textBubbleList.includes(e);
+    let flag = true;
+    const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~\d]/;
+    if (!format.test(e) && e && isNaN(e)) {
+        !textBubbleList.includes(e) ? flag = false : console.log('item exists')
+    }
+    return (flag);
+    // return textBubbleList.includes(e);
 };
 
 //append
@@ -49,6 +57,7 @@ function removeBubble(bubble) {
 };
 
 //Render default text bubbles  and attach onClick listner
+//Tooltip
 defaultBubbleList.forEach(e => {
     const textBubble = document.createElement('div');
     textBubble.classList.add('text-bubble', 'default-bubble');
@@ -65,11 +74,22 @@ function clearTextInput() {
     tagInput.value = "";
 };
 
-tagInput.addEventListener('keyup', () => {
+tagInput.addEventListener('keyup', (e) => {
     // console.log(tagInput.value);
-    if (tagInput.value.includes(" ")) {
+    if (tagInput.value.includes(" ") || e.keyCode == 13) {
         appendTextBubble(tagInput.value.trim());
         clearTextInput();
     }
 });
 
+imgGrp.forEach(node => {
+    node.addEventListener('click', () => {
+        enlargedImg.style.display = 'block';
+        const imgURL = node.getAttribute('src');
+        enlargedImg.style.backgroundImage = `url(${imgURL})`;
+    })
+})
+
+enlargedImg.addEventListener('click', () => {
+    enlargedImg.style.display = 'none';
+})

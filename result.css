@@ -1,0 +1,10 @@
+.result-container {
+    background-color: var(--navbar-bg-color);
+    text-align: center;
+    height: 100vh;
+}
+
+.result-heading {
+    font-size: var(--homepage-heading-font-size);
+    color: var(--homepage-intro-color);
+}

@@ -4,9 +4,11 @@ const dropArea = document.querySelector('.place-holder'),
     uploadBtn = document.querySelector('#upload-btn'),
     inputBtn = document.querySelector('#chooseFile-btn'),
     previewImg = document.querySelector('#preview-img'),
-    submitBtn = document.querySelector('#submit-btn');
+    submitBtn = document.querySelector('#submit-btn'),
+    resultImg = document.querySelector('#result-img');
 
 let file;
+let fileURL;
 
 //input btn hidden; alias btn setup
 uploadBtn.addEventListener('click', () => {
@@ -57,7 +59,7 @@ function displayImage() {
     if (validTypes.includes(fileType)) {
         let fileReader = new FileReader();
         fileReader.onload = () => {
-            let fileURL = fileReader.result;
+            fileURL = fileReader.result;
             console.log(fileURL);
             imgPreview.src = fileURL;
         }
@@ -68,3 +70,10 @@ function displayImage() {
         dropArea.classList.remove('active');
     }
 }
+
+submitBtn.addEventListener('click', () => {
+    resultImg.src = fileURL;
+    const resultSection = document.querySelector('.result-container');
+    resultSection.style.display = 'block';
+    resultSection.scrollIntoView();
+});

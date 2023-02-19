@@ -2,6 +2,7 @@
 @import url('./upload.css');
 @import url('./query.css');
 @import url('./about.css');
+@import url('./result.css');
 
 :root {
     --navbar-bg-color: rgb(26, 25, 25);
@@ -27,6 +28,8 @@
     --upload-section-mobile-heading-font-size: 1.5rem;
 
     --query-label-font-size: 1.3rem;
+
+    --bubble-container-bg-color: rgb(63, 62, 62);
 }
 
 * {
