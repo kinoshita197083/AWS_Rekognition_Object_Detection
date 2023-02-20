@@ -2,7 +2,6 @@
 @import url('./upload.css');
 @import url('./query.css');
 @import url('./about.css');
-@import url('./result.css');
 
 :root {
     --navbar-bg-color: rgb(26, 25, 25);

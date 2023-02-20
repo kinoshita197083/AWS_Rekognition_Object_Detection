@@ -48,6 +48,61 @@
     display: none;
 }
 
+.result-holder {
+    padding: 1%;
+    background-color: var(--bubble-container-bg-color);
+    border-radius: 50px;
+    margin: 5% auto;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    width: 80%;
+}
+
+.result-bubble-wrapper {
+    display: flex;
+    overflow: scroll;
+    width: 100%;
+}
+
+.result-bubble {
+    width: max-content;
+    background-color: rgb(212, 236, 246);
+    border-radius: 50px;
+    padding: 0.5% 1%;
+    margin-right: 1%;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    font-size: 5rem;
+    color: rgb(169, 168, 168);
+    animation: spin 1s infinite linear;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+}
+
+.spinner.display {
+    visibility: visible;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .result-heading {
     font-size: var(--homepage-heading-font-size);
     color: var(--homepage-intro-color);
