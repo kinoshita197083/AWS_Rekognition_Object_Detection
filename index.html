@@ -15,10 +15,6 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/fa0610f9a7.js" crossorigin="anonymous"></script>
-
-    <!-- external javascript -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,10 +39,8 @@
         <div class="container">
             <div class="even-columns">
                 <div class="left-half">
-                    <h1 class="home-heading">Analyse Images and Videos</h1>
-                    <p class="home-intro">A fully managed service that can detect objects, text, faces from the images
-                        and videos that you
-                        upload.</p>
+                    <h1 class="home-heading">Analyse JPG and PNG</h1>
+                    <p class="home-intro">A fully managed service that can detect labels of the uploaded image.</p>
                     <button class="btn">Get Started</button>
                 </div>
 
@@ -65,15 +59,18 @@
                 </div>
 
                 <div class="right-half">
-                    <h2 class="about-heading">About</h2>
-                    <p class="about-text">Amazon Rekognition can detect text in images and videos. It can then convert
-                        the detected text into machine-readable text. You can use machine-readable text detection in
-                        images to implement solutions including: </p>
+                    <h2 class="about-heading">What exactly is Reko?</h2>
+                    <p class="about-text">Reko is an image analysing tool that is powered by Amazon Rekognition. It can
+                        detect labels, faces, emotions, texts, and a lot more. However, the current version only
+                        supports label detection.</p>
+                    <p class="about-text">Label detection enable you to generate metadata for your image libraries for
+                        search and filtering.</p>
+                    <p class="about-text">For future versions, it is planned to implement additional features including:
+                    </p>
                     <ul class="about-text padding-left-3">
-                        <li>mp4</li>
-                        <li>jpg</li>
-                        <li>png</li>
-                        <li>gif</li>
+                        <li>Facial recognition</li>
+                        <li>Facial analysis</li>
+                        <li>Text in image</li>
                     </ul>
                 </div>
             </div>
@@ -143,8 +140,8 @@
     </section>
 
     <script src="app.js"></script>
-    <script src="image_upload.js"></script>
-    <script src="query.js"></script>
+    <script src="./Upload/image_upload.js"></script>
+    <script src="./Query/query.js"></script>
 </body>
 
 </html>

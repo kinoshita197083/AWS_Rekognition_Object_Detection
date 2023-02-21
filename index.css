@@ -1,7 +1,7 @@
-@import url('./home.css');
-@import url('./upload.css');
-@import url('./query.css');
-@import url('./about.css');
+@import url('./Home/home.css');
+@import url('./Upload/upload.css');
+@import url('./Query/query.css');
+@import url('./About/about.css');
 
 :root {
     --navbar-bg-color: rgb(26, 25, 25);
