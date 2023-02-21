@@ -4,10 +4,14 @@ const queryWrapper = document.querySelector('.query-form'),
     tagInput = document.querySelector('#tag'),
     defaultBubbleWrapper = document.querySelector('.default-bubble-list'),
     imgGrp = document.querySelectorAll('.img-grp'),
-    enlargedImg = document.querySelector('.enlarged-img');
+    enlargedImg = document.querySelector('.enlarged-img'),
+    querySubmitBtn = document.querySelector('#query-submit-btn'),
+    carousel = document.querySelector('.carousel-container');
 
 let textBubbleList = [];
+let returnedImg = [];
 let defaultBubbleList = ['smile', 'male', 'glasses', 'woman', 'happy', 'dog', 'tree'];
+let queryURL = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod/queryreko';
 
 //Update the text bubble wrapper for the latest render
 function updateTextBubbleWrapper() {
@@ -82,14 +86,74 @@ tagInput.addEventListener('keyup', (e) => {
     }
 });
 
-imgGrp.forEach(node => {
-    node.addEventListener('click', () => {
+//Click to view in full screen
+function imgGRPEnlargedListener(element) {
+    element.addEventListener('click', () => {
         enlargedImg.style.display = 'block';
-        const imgURL = node.getAttribute('src');
+        let imgURL = element.getAttribute('src');
         enlargedImg.style.backgroundImage = `url(${imgURL})`;
     })
-})
+}
 
+//Clicked the enlarged img to close the full screen view
 enlargedImg.addEventListener('click', () => {
     enlargedImg.style.display = 'none';
+})
+
+function renderReturnedImage(uri) {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('img-wrapper');
+
+    const img = document.createElement('img');
+    img.classList.add('img-grp')
+    img.src = uri;
+
+    wrapper.appendChild(img);
+    carousel.appendChild(wrapper);
+
+    imgGRPEnlargedListener(img); //click to view in full screen
+}
+
+function clearAllReturnedImages() {
+    while (carousel.firstChild) {
+        carousel.removeChild(carousel.lastChild);
+    }
+}
+
+//Fetch with POST request
+async function submitTextbubbles() {
+    clearAllReturnedImages();
+    displayLoading();
+    const response = await fetch(queryURL, {
+        method: 'POST',
+        header: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            tags: textBubbleList
+        })
+    });
+    return response
+}
+
+//Submit the request when pressing Submit btn
+querySubmitBtn.addEventListener('click', async () => {
+    clearAllTextBubbles();
+    if (textBubbleList.length > 0) {
+        const res = await submitTextbubbles().catch(err => alert(err));
+        let data = await res.json();
+        hideLoading();
+        textBubbleList = [];
+        // console.log(data)
+        returnedImg = [...data];
+        console.log(returnedImg)
+        if (returnedImg.length < 1) {
+            alert('No relevant image found')
+        }
+        carousel.style.visibility = 'visible';
+        returnedImg.forEach(img => {
+            renderReturnedImage(img);
+        });
+        textBubbleList = [];
+    } else {
+        alert('Type or select keywords to search')
+    }
 })

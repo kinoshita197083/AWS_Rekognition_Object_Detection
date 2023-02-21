@@ -82,17 +82,21 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    display: none;
+    visibility: hidden;
 }
 
 .img-wrapper {
-    width: 40%;
-    height: auto;
+    width: 30rem;
+    height: 20rem;
     flex: 0 0 auto;
+    border-radius: 8px;
 }
 
 .img-grp {
+    width: 30rem;
+    height: 20rem;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .enlarged-img {

@@ -12,7 +12,8 @@ const dropArea = document.querySelector('.place-holder'),
 let file;
 let fileURL;
 let fileName;
-let url = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod';
+let validTypes = ["image/jpg", "image/jpeg", "image/png"];
+let analyseURL = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod';
 
 //input btn hidden; alias btn setup
 uploadBtn.addEventListener('click', () => {
@@ -24,7 +25,10 @@ uploadBtn.addEventListener('click', () => {
 inputBtn.addEventListener('change', () => {
     if (inputBtn.files[0].size > 2097152) {
         alert("Error: File size limite exceeded 2MB")
-        inputBtn.value = ""
+        inputBtn.value = "";
+    } else if (!validateFileType(inputBtn.files[0].type)) {
+        alert("Error: Invalid File Type")
+        inputBtn.value = "";
     } else {
         file = inputBtn.files[0];
         fileName = inputBtn.files[0].name;
@@ -51,36 +55,35 @@ dropArea.addEventListener('dragleave', () => {
 //When img is drop on the preview box, display in the preview
 dropArea.addEventListener('drop', (e) => {
     e.preventDefault();
-
-    //Always select the 1st file, if user selects mutiple
-    file = e.dataTransfer.files[0];
-    fileName = inputBtn.files[0].name;
-    displayImage();
-    submitBtn.style.display = 'block';
-    // console.log(file);
+    if (inputBtn.files[0].size > 2097152) {
+        alert("Error: File size limite exceeded 2MB")
+        dropArea.classList.remove('active');
+        inputBtn.value = "";
+    } else if (!validateFileType(inputBtn.files[0].type)) {
+        alert("Error: Invalid File Type")
+        dropArea.classList.remove('active');
+        inputBtn.value = "";
+    } else {
+        //Always select the 1st file, if user selects mutiple
+        file = e.dataTransfer.files[0];
+        fileName = inputBtn.files[0].name;
+        displayImage();
+        submitBtn.style.display = 'block';
+    }
 })
 
+function validateFileType(fileType) {
+    return validTypes.includes(fileType);
+}
+
 function displayImage() {
-    //Retrieve file type
-    let fileType = file.type;
-
-    //Define what file types are valid
-    let validTypes = ["image/jpg", "image/jpeg", "image/png"];
-
-    //Check if the file type is within the defined valid file types
-    if (validTypes.includes(fileType)) {
-        let fileReader = new FileReader();
-        fileReader.onload = () => {
-            fileURL = fileReader.result;
-            // console.log(fileURL);
-            imgPreview.src = fileURL;
-        }
-        fileReader.readAsDataURL(file);
-
-    } else {
-        alert('Invalid File Type');
-        dropArea.classList.remove('active');
+    let fileReader = new FileReader();
+    fileReader.onload = () => {
+        fileURL = fileReader.result;
+        // console.log(fileURL);
+        imgPreview.src = fileURL;
     }
+    fileReader.readAsDataURL(file);
 }
 
 function displayLoading() {
@@ -93,7 +96,7 @@ function hideLoading() {
 
 async function submitFile() {
     displayLoading();
-    const response = await fetch(url, {
+    const response = await fetch(analyseURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -117,30 +120,44 @@ function createResultBubble(e) {
     resultHolder.appendChild(textBubble);
 };
 
-submitBtn.addEventListener('click', () => {
+submitBtn.addEventListener('click', async () => {
     resultImg.src = fileURL;
-
-    submitFile().then(res => {
-        if (res.ok) {
-            // alert('Successfully uploaded')
-            return res.json();
-        } else {
-            alert('Error: The file appears to be corrupted')
-        }
-
-    }).then(data => {
-        console.log(data)
-        hideLoading();
-        return data;
-    }).then(data => {
-        clearAllResultBubbles();
-        data.Labels.forEach(el => {
-            createResultBubble(el);
-        });
-    })
-        .catch('Did not go well');
+    let data = await submitFile().catch(() => alert('Error: The file appears to be corrupted'));
+    data = await data.json().catch((err) => alert(err));
+    console.log(data);
 
     const resultSection = document.querySelector('.result-container');
     resultSection.style.display = 'block';
     resultSection.scrollIntoView();
+
+    if (data) {
+        hideLoading()
+        clearAllResultBubbles();
+        data.Labels.forEach(el => {
+            createResultBubble(el);
+        });
+    }
+
+    // submitFile().then(res => {
+    //     if (res.ok) {
+    //         return res.json();
+    //     } else {
+    //         alert('Error: The file appears to be corrupted')
+    //     }
+
+    // }).then(data => {
+    //     console.log(data)
+    //     hideLoading();
+    //     return data;
+    // }).then(data => {
+    //     clearAllResultBubbles();
+    //     data.Labels.forEach(el => {
+    //         createResultBubble(el);
+    //     });
+    // })
+    //     .catch('Did not go well');
+
+    // const resultSection = document.querySelector('.result-container');
+    // resultSection.style.display = 'block';
+    // resultSection.scrollIntoView();
 });
