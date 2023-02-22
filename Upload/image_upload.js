@@ -141,27 +141,4 @@ submitBtn.addEventListener('click', async () => {
             createResultBubble(el);
         });
     }
-
-    // submitFile().then(res => {
-    //     if (res.ok) {
-    //         return res.json();
-    //     } else {
-    //         alert('Error: The file appears to be corrupted')
-    //     }
-
-    // }).then(data => {
-    //     console.log(data)
-    //     hideLoading();
-    //     return data;
-    // }).then(data => {
-    //     clearAllResultBubbles();
-    //     data.Labels.forEach(el => {
-    //         createResultBubble(el);
-    //     });
-    // })
-    //     .catch('Did not go well');
-
-    // const resultSection = document.querySelector('.result-container');
-    // resultSection.style.display = 'block';
-    // resultSection.scrollIntoView();
 });

@@ -83,6 +83,10 @@
     text-align: justify;
 }
 
+.instruction-img-grp {
+    margin-block: 10%;
+}
+
 @media (max-width: 800px) {
     .mobile-config-hidden {
         display: none;

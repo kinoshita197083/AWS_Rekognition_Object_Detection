@@ -51,6 +51,10 @@ a {
     color: var(--navbar-logo-color);
 }
 
+img {
+    object-fit: contain;
+}
+
 .container {
     padding: 8%;
 }
