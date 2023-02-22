@@ -6,7 +6,7 @@ const dropArea = document.querySelector('.place-holder'),
     previewImg = document.querySelector('#preview-img'),
     submitBtn = document.querySelector('#submit-btn'),
     resultImg = document.querySelector('#result-img'),
-    spinner = document.querySelector('.spinner'),
+    spinners = document.querySelectorAll('.spinner'),
     resultHolder = document.querySelector('#analysed-results');
 
 let file;
@@ -87,11 +87,15 @@ function displayImage() {
 }
 
 function displayLoading() {
-    spinner.classList.add('display');
+    spinners.forEach(spinner => {
+        spinner.classList.add('display');
+    })
 }
 
 function hideLoading() {
-    spinner.classList.remove('display');
+    spinners.forEach(spinner => {
+        spinner.classList.remove('display');
+    })
 }
 
 async function submitFile() {

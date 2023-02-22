@@ -30,7 +30,7 @@
                 <li><a href="#about" class="nav-links nav-border-bottom">About</a></li>
                 <li><a href="#upload" class="nav-links nav-border-bottom">Analyse</a></li>
                 <li><a href="#query" class="nav-links nav-border-bottom">Query</a></li>
-                <li><a href="#" class="nav-links nav-links-btn">Sign Up</a></li>
+                <li><a href="#" class="nav-links nav-links-btn" id="sign-up-btn">Manual</a></li>
             </ul>
         </nav>
     </header>
@@ -41,11 +41,37 @@
                 <div class="left-half">
                     <h1 class="home-heading">Analyse JPG and PNG</h1>
                     <p class="home-intro">A fully managed service that can detect labels of the uploaded image.</p>
-                    <button class="btn">Get Started</button>
+                    <button class="btn" id="get-start-btn">Get Started</button>
                 </div>
 
                 <div class="right-half">
                     <img id="home-img" src="./image/undraw_the_search_s0xf.svg" alt="homepage-cover"></img>
+                </div>
+            </div>
+
+            <!-- Get Start Section (hidden by default) -->
+            <div class="instruction" id="get-start-section">
+                <div class="instruction-container">
+                    <div class="left-half mobile-config-hidden">
+                        <div class="instruction-img-wrapper">
+                            <img src="./image/undraw_flagged_2uty.svg" alt="instruction image" width="100%"
+                                height="100%">
+                        </div>
+                    </div>
+                    <div class="right-half bg-themeColor right-container">
+                        <h1 class="instruction-heading">Before You Start</h1>
+                        <p class="instruction-text">Please do not upload personal photos or anything that is deemed
+                            important.
+                            The current version of Reko is still unstable</p>
+                        <p class="instruction-text">To continue using to the service, it is
+                            assumed you are agree that Reko will not be responsible for any loss or damage due to using
+                            Reko's
+                            services</p>
+                        <div class="instruction-img-wrapper">
+                            <img src="./image/undraw_user_flow_re_bvfx (1).svg" alt="instruction image" width="100%"
+                                height="100%">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,7 +81,7 @@
         <div class="container">
             <div class="even-columns">
                 <div class="left-half">
-                    <img src="./image/undraw_photo_re_5blb.svg" alt="About cover image" id="about-img">
+                    <img src="./image/undraw_images_re_0kll.svg" alt="About cover image" id="about-img">
                 </div>
 
                 <div class="right-half">
@@ -126,20 +152,13 @@
             </div>
             <div class="default-bubble-list"></div>
             <div class="carousel-container">
-                <!-- <div class="img-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-                        alt="" class="img-grp" width="100%" height="100%">
-                </div>
-                <div class="img-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-                        alt="" class="img-grp" width="100%" height="100%">
-                </div> -->
             </div>
             <div class="enlarged-img"></div>
         </div>
     </section>
 
     <script src="app.js"></script>
+    <script src="./Home/home.js"></script>
     <script src="./Upload/image_upload.js"></script>
     <script src="./Query/query.js"></script>
 </body>

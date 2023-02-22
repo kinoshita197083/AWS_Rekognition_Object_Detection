@@ -14,11 +14,15 @@
 
     --navbar-mobile-menu-color: rgb(46, 45, 45);
 
+    --instruction-heading-font-size: 2.5rem;
+    --instruction-heading-mobile-font-size: 1.5rem;
+
     --btn-font-size: 1rem;
 
     --heading-font-color: blue;
 
     --homepage-heading-font-size: 2.5rem;
+    --homepage-heading-mobile-font-size: 2rem;
     --homepage-intro-color: rgb(240, 237, 237);
     --homepage-intro-font-size: 1.2rem;
     /* --homepage-intro-bg-color: rgb(37, 37, 37); */
@@ -53,7 +57,7 @@ a {
 
 .even-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .btn {
@@ -96,6 +100,7 @@ a {
     width: 100%;
     background-color: var(--navbar-bg-color);
     position: fixed;
+    /* z-index: 99; */
 }
 
 .navbar {

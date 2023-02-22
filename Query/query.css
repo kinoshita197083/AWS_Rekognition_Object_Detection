@@ -60,6 +60,7 @@
 
 .default-bubble-list {
     display: flex;
+    overflow: scroll;
     padding-inline: 3%;
 }
 
@@ -120,5 +121,10 @@
 
     .carousel-container {
         margin: 8% auto;
+    }
+
+    .query-heading {
+        font-size: var(--homepage-heading-mobile-font-size);
+        margin-block: 5%;
     }
 }

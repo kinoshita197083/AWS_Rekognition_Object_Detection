@@ -10,8 +10,8 @@
 }
 
 #about-img {
-    height: 110%;
-    width: 110%;
+    height: 80%;
+    width: 80%;
 }
 
 .about-heading {
@@ -26,8 +26,9 @@
     margin: 0 auto;
 }
 
-/* @media (max-width: 800px) {
-    .about-container {
-
+@media (max-width: 800px) {
+    .about-heading {
+        font-size: var(--homepage-heading-mobile-font-size);
+        margin-bottom: 5%;
     }
-} */
+}

@@ -140,7 +140,7 @@ querySubmitBtn.addEventListener('click', async () => {
     if (textBubbleList.length > 0) {
         const res = await submitTextbubbles().catch(err => alert(err));
         let data = await res.json();
-        hideLoading();
+        data ? hideLoading() : console.log('Status: OK');
         textBubbleList = [];
         // console.log(data)
         returnedImg = [...data];
