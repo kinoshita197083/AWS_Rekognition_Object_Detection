@@ -137,22 +137,31 @@ async function submitTextbubbles() {
 //Submit the request when pressing Submit btn
 querySubmitBtn.addEventListener('click', async () => {
     clearAllTextBubbles();
-    if (textBubbleList.length > 0) {
+    if (textBubbleList.length > 0 || tagInput.value.length > 0) {
+        //Submit without placing the tag in the search zone
+        let textInInputField = tagInput.value;
+        textBubbleList.push(textInInputField);
+        clearTextInput();
+
+        //Fetch
         const res = await submitTextbubbles().catch(err => alert(err));
         let data = await res.json();
         data ? hideLoading() : console.log('Status: OK');
+
+        //Reset the request list for the next request
         textBubbleList = [];
-        // console.log(data)
+
         returnedImg = [...data];
         console.log(returnedImg)
         if (returnedImg.length < 1) {
             alert('No relevant image found')
         }
+
+        //Render the retrieved images in the carousel
         carousel.style.visibility = 'visible';
         returnedImg.forEach(img => {
             renderReturnedImage(img);
         });
-        textBubbleList = [];
     } else {
         alert('Type or select keywords to search')
     }

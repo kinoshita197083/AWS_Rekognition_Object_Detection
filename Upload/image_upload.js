@@ -12,7 +12,7 @@ const dropArea = document.querySelector('.place-holder'),
 let file;
 let fileURL;
 let fileName;
-let validTypes = ["image/jpg", "image/jpeg", "image/png"];
+let validTypes = ["image/jpg", "image/jpeg", "image/png", "image/JPEG", "image/HEIF"];
 let analyseURL = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod';
 
 //input btn hidden; alias btn setup
@@ -23,8 +23,8 @@ uploadBtn.addEventListener('click', () => {
 
 //When img is received, display in the preview
 inputBtn.addEventListener('change', () => {
-    if (inputBtn.files[0].size > 2097152) {
-        alert("Error: File size limite exceeded 2MB")
+    if (inputBtn.files[0].size > 5097152) {
+        alert("Error: File size limite exceeded 7MB")
         inputBtn.value = "";
     } else if (!validateFileType(inputBtn.files[0].type)) {
         alert("Error: Invalid File Type")
@@ -55,8 +55,8 @@ dropArea.addEventListener('dragleave', () => {
 //When img is drop on the preview box, display in the preview
 dropArea.addEventListener('drop', (e) => {
     e.preventDefault();
-    if (inputBtn.files[0].size > 2097152) {
-        alert("Error: File size limite exceeded 2MB")
+    if (inputBtn.files[0].size > 7097152) {
+        alert("Error: File size limite exceeded 5MB")
         dropArea.classList.remove('active');
         inputBtn.value = "";
     } else if (!validateFileType(inputBtn.files[0].type)) {

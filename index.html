@@ -72,7 +72,7 @@
                             <img src="./image/undraw_user_flow_re_bvfx (1).svg" alt="instruction image" width="100%"
                                 height="100%">
                         </div>
-                        <h1 class="instruction-heading">File Size limit is 2MB</h1>
+                        <h1 class="instruction-heading">File Size limit is 7MB</h1>
                         <p class="instruction-text">Photos taken by smart phone nowadays can easily exceed the limit.
                             Screenshots, on the other hand, could be a good alternative to test out the functionality.
                         </p>
@@ -81,12 +81,12 @@
                                 height="100%">
                         </div>
                         <h1 class="instruction-heading">Query</h1>
-                        <p class="instruction-text">Multiple labels query is available. Please ensure the text bubbles
-                            are placed in the search zone before submitting your request.
+                        <p class="instruction-text">Multiple labels query is available. Each keyword will be
+                            automatically separated and placed into the search zone. Keywords in the search zone can be
+                            removed by simply clicking on it.
                         </p>
                         <p class="instruction-text">You can either type out the keyword, and then press 'Enter' or
-                            spacebar to append to the search zone, or simply drag the default text bubbles to the search
-                            zone.
+                            spacebar to append to the search zone, or simply click on the default text bubbles.
                         </p>
                         <div class="instruction-img-grp">
                             <div class="instruction-img-wrapper">
@@ -99,6 +99,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Get Start Section (hidden by default) -->
         </div>
     </section>
 
@@ -140,12 +141,10 @@
                         height="100%">
                     <i class="fa-solid fa-palette spinner"></i>
                 </div>
-                <!-- <form action=""> -->
                 <input type="file" id="chooseFile-btn" hidden>
                 <button id="upload-btn" class="btn">Browse File</button>
                 <br>
                 <button style="margin-top: 2%;" id="submit-btn" class="btn">Analyse</button>
-                <!-- </form> -->
             </div>
         </div>
     </section>
@@ -166,7 +165,7 @@
 
     <section id="query" class="query-container">
         <div class="container">
-            <h2 class="query-heading">Search with keyword</h2>
+            <h2 class="query-heading">Search with Keywords</h2>
             <div class="flex-container">
                 <div class="query-form">
                     <div class="text-bubble-wrapper" id="default-options"></div>
