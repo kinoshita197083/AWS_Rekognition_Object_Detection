@@ -10,7 +10,7 @@ const queryWrapper = document.querySelector('.query-form'),
 
 let textBubbleList = [];
 let returnedImg = [];
-let defaultBubbleList = ['smile', 'male', 'glasses', 'woman', 'happy', 'dog', 'tree'];
+let defaultBubbleList = ['pet', 'male', 'person', 'baby', 'anime', 'figurine', 'walking'];
 let queryURL = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod/queryreko';
 
 //Update the text bubble wrapper for the latest render
@@ -45,8 +45,7 @@ function checkIfTextBubbleExists(e) {
     if (!format.test(e) && e && isNaN(e)) {
         !textBubbleList.includes(e) ? flag = false : console.log('item exists')
     }
-    return (flag);
-    // return textBubbleList.includes(e);
+    return flag;
 };
 
 //append

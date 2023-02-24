@@ -14,6 +14,7 @@ let fileURL;
 let fileName;
 let validTypes = ["image/jpg", "image/jpeg", "image/png", "image/JPEG", "image/HEIF"];
 let analyseURL = 'https://gc6qq4wfde.execute-api.ap-southeast-2.amazonaws.com/prod';
+let cache = {}; //Store the analysis response
 
 //input btn hidden; alias btn setup
 uploadBtn.addEventListener('click', () => {
@@ -72,15 +73,56 @@ dropArea.addEventListener('drop', (e) => {
     }
 })
 
-function validateFileType(fileType) {
-    return validTypes.includes(fileType);
+//Fetch AWS Rekognition API
+async function submitFile() {
+
+    displayLoading();
+
+    if (fileName in cache) {
+        console.log('fetch from cache')
+        let res = cache[fileName].clone()
+        return res
+    } else {
+        console.log('fetch from API')
+        const response = await fetch(analyseURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: fileName,
+                file: fileURL.substring(fileURL.indexOf(',') + 1)
+            })
+        });
+        cache[fileName] = response;
+        return response;
+    }
 }
+
+submitBtn.addEventListener('click', async () => {
+    resultImg.src = fileURL;
+    let data = await submitFile().catch(() => alert('Error: The file appears to be corrupted'));
+    //https://stackoverflow.com/questions/53511974/javascript-fetch-failed-to-execute-json-on-response-body-stream-is-locked
+    data = await data.clone().json().catch((err) => alert(err)); // .json() method been called once before it is stored in cache, so it will crash without .clone()
+    console.log(data);
+
+    const resultSection = document.querySelector('.result-container');
+    resultSection.style.display = 'block';
+    resultSection.scrollIntoView();
+
+    if (data) {
+        hideLoading()
+        clearAllResultBubbles();
+        data.Labels.forEach(el => {
+            createResultBubble(el);
+        });
+    }
+});
 
 function displayImage() {
     let fileReader = new FileReader();
     fileReader.onload = () => {
         fileURL = fileReader.result;
-        // console.log(fileURL);
         imgPreview.src = fileURL;
     }
     fileReader.readAsDataURL(file);
@@ -98,19 +140,8 @@ function hideLoading() {
     })
 }
 
-async function submitFile() {
-    displayLoading();
-    const response = await fetch(analyseURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: fileName,
-            file: fileURL.substring(fileURL.indexOf(',') + 1)
-        }),
-    });
-    return response;
+function validateFileType(fileType) {
+    return validTypes.includes(fileType);
 }
 
 function clearAllResultBubbles() {
@@ -123,22 +154,3 @@ function createResultBubble(e) {
     textBubble.textContent = e.Name;
     resultHolder.appendChild(textBubble);
 };
-
-submitBtn.addEventListener('click', async () => {
-    resultImg.src = fileURL;
-    let data = await submitFile().catch(() => alert('Error: The file appears to be corrupted'));
-    data = await data.json().catch((err) => alert(err));
-    console.log(data);
-
-    const resultSection = document.querySelector('.result-container');
-    resultSection.style.display = 'block';
-    resultSection.scrollIntoView();
-
-    if (data) {
-        hideLoading()
-        clearAllResultBubbles();
-        data.Labels.forEach(el => {
-            createResultBubble(el);
-        });
-    }
-});
