@@ -84,20 +84,24 @@
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     visibility: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 3%;
 }
 
 .img-wrapper {
-    width: 30rem;
-    height: 20rem;
+    width: 50%;
     flex: 0 0 auto;
     border-radius: 8px;
+    scroll-snap-align: start;
 }
 
 .img-grp {
-    width: 30rem;
-    height: 20rem;
+    width: 100%;
+    /* height: 20rem; */
+    aspect-ratio: 3/2;
     cursor: pointer;
     object-fit: cover;
+    border-radius: inherit;
 }
 
 .enlarged-img {
@@ -113,7 +117,7 @@
     display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .text-bubble {
         font-size: 1rem;
         padding: 2% 2%;
@@ -126,5 +130,9 @@
     .query-heading {
         font-size: var(--homepage-heading-mobile-font-size);
         margin-block: 5%;
+    }
+
+    .query-container {
+        height: 80vh;
     }
 }
